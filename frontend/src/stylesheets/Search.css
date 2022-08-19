@@ -1,0 +1,14 @@
+.customSearch{
+    justify-content: center;
+}
+
+#inputCustom {
+    width: 150%;
+    height: 30px;
+    border-radius: 10px;
+    font-size: 15px;
+}
+
+.button{
+    border-radius: 8px;
+}
