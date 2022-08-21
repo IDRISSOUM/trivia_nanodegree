@@ -2,6 +2,57 @@
   padding: 0px 0px 10px;
 }
 
+.form-group {
+  display: block;
+  flex-direction: column;
+  width: 100%;
+  padding: .5rem .8rem .5rem .8rem;
+  margin: .9vw 0 ;
+  border:0;
+  border-radius: 5px;
+  font-size: 20px;
+
+}
+
 #add-form {
   text-align: center;
+  justify-content: space-between;
+
+}
+
+select {
+  width: 20%;
+  height: 5%;
+  padding: 1%;
+  border-radius: 10px
+}
+
+#add-question-form {
+
+}
+
+.customInput{
+  width: 25%;
+  height: 5%;
+  padding: 10px;
+  border-radius: 15px;
+}
+
+label {
+  font-weight: bold;
+  font-size: 25px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-style: normal;
+  padding: 10px 5px 15px 20px;
+}
+
+#customButton {
+  width: 20%;
+  height: 20%;
+  margin: 1rem 0 1rem 0; 
+  display: inline-block;
+  margin: 1rem 0 1rem 8rem;  
+  border-radius: 20px;
+  padding: 10px;
+  font-size: 20px;
 }

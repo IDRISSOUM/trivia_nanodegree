@@ -34,77 +34,78 @@ class TriviaTestCase(unittest.TestCase):
     Write at least one test for each test for successful operation and for expected errors.
     """
     
-    """
-    test pour la recuperation des cateories
-    """
     def test_get_all_categories(self):
-        response = self.client().get('/categories')
+        """
+        test pour la recuperation des cateories
+        """
+        response = self.client().get('/api/categories')
         data = json.loads(response.data)
 
         self.assertEqual(response.status_code, 200)
         self.assertEqual(data['success'], True)
 
     
-    """
-    test pour la recuperation des questions
-    """
     def test_get_questions(self):
-        response = self.client().get('/questions')
+        """
+        test pour la recuperation des questions
+        """
+        response = self.client().get('/api/questions')
         data = json.loads(response.data)
 
         self.assertEqual(response.status_code, 200)
         self.assertEqual(data['success'], True)
 
     
-    """
-    test avec de faux parametres
-    """
     def test_get_questions_404(self):
-        response = self.client().get('/questions?page=500')
+        """
+        test avec de faux parametres
+        """
+        response = self.client().get('/api/questions?page=500')
         data = json.loads(response.data)
 
         self.assertEqual(response.status_code, 404)
         self.assertEqual(data['success'], False)
 
     
-    """
-    test de suppression selon l'id envoye en parametre
-    """
     def test_delete_question(self):
-        response = self.client().delete('/questions/2')
+        """
+        test de suppression selon l'id envoye en parametre
+        """
+        response = self.client().delete('/api/questions/2')
         data = json.loads(response.data)
 
         self.assertEqual(response.status_code, 200)
         self.assertEqual(data['success'], True)
         self.assertEqual(data['deleted'],2)
     
-    
-    """
-    test de suppression avec un mauvais id
-    """
-    def test_delete_question_404(self):
-        response = self.client().delete('/questions/1000')
+
+    def test_delete_question_404(self):   
+        """
+        test de suppression avec un mauvais id
+        """
+        response = self.client().delete('/api/questions/1000')
         data = json.loads(response.data)
 
         self.assertEqual(response.status_code, 404)
 
     
-    """
-    test de creation de questions
-    """
+    
     def test_create_question(self):
-        response = self.client().post('/questions', json=self.new_question)
+        """
+        test de creation de questions
+        """
+        response = self.client().post('/api/questions', json=self.new_question)
         data = json.loads(response.data)
 
         self.assertEqual(response.status_code, 200)
         self.assertEqual(data['success'], True)
     
     
-    """
-    test de l'erreur 405
-    """
     def test_405_question_creation_not_allowed(self):
-        response = self.client().post('/questions/45', json=self.new_question)
+        """
+        test de l'erreur 405
+        """
+        response = self.client().post('/api/questions/45', json=self.new_question)
         data = json.loads(response.data)
 
         self.assertEqual(response.status_code, 405)
@@ -112,11 +113,12 @@ class TriviaTestCase(unittest.TestCase):
         self.assertEqual(data['message'], 'method not allowed')
     
     
-    """
-    test de recuperation d'une categorie selon son id
-    """
+
     def test_get_questions_by_category(self):
-        response = self.client().get('/categories/1/questions')
+        """
+        test de recuperation d'une categorie selon son id
+        """
+        response = self.client().get('/api/categories/1/questions')
         data = json.loads(response.data)
 
         self.assertEqual(response.status_code, 200)
@@ -124,11 +126,11 @@ class TriviaTestCase(unittest.TestCase):
         self.assertEqual(data['success'], True)
 
     
-    """
-    test de recuperation d'une ressource qui n'existe pas
-    """
     def test_get_404_questions_by_category(self):
-        response = self.client().get('/categories/1000/questions')
+        """
+        test de recuperation d'une ressource qui n'existe pas
+        """
+        response = self.client().get('/api/categories/1000/questions')
         data = json.loads(response.data)
 
         self.assertEqual(response.status_code, 404)
@@ -136,9 +138,25 @@ class TriviaTestCase(unittest.TestCase):
         self.assertEqual(data['success'], False)
     
     
-    """
-    test de creation de jeux
-    """
+    def test_play_quiz_1(self):
+        """
+        test de creation de jeux
+        """
+        res = self.client().post('/api/quizzes', json={"prev": [], "quiz_category": {"type": "Geography", "id": "3"}})
+        data = json.loads(res.data)
+        self.assertEqual(data['success'], True)                 
+        self.assertIsNotNone(data['question'])                  
+        self.assertEqual(data['question']['category'], 3) 
+
+    def test_play_quiz_4(self):
+        """
+        test error messages
+        """
+        res = self.client().post('/api/quizzes', json={"prev": [13], "quiz_category": {"type": "Geography"}})
+        data = json.loads(res.data)
+        self.assertEqual(data['success'], False)                 
+        self.assertEqual(data['error'], 400)   
+
 
 
 

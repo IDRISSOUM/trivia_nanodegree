@@ -3,11 +3,24 @@
     margin-left: 10%;
     text-align: center;
     margin-top: 40px;
+    padding: 10px;
 }
 
 .category-holder {
-    margin-top: 16px;
-    font-size: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.play-category {
+    border-color: black;
+    border-style: solid;
+    border-width: 0.5px;
+    border-radius: 10px;
+    justify-content: space-around;
+    margin: 10px 10px 0 10px;
+    padding: 10px;
+    width: 10%;
 }
 
 .choose-header {
@@ -44,4 +57,22 @@ div.button {
 
 .wrong {
     color: red;
+}
+
+#customInput1 {
+    width: 80%;
+    border-radius: 10px;
+    text-align: center;
+    align-self: center;
+    padding: 5px;
+    font-size: 25px;
+}
+
+#input-btn {
+    border-radius: 10px;
+    text-align: center;
+    align-self: center;
+    padding: 5px;
+    font-size: 15px;
+    width: 20%;
 }

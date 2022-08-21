@@ -21,7 +21,7 @@ class QuizView extends Component {
 
   componentDidMount() {
     $.ajax({
-      url: `/categories`, //TODO: update request URL
+      url: `/api/questions`, //TODO: update request URL
       type: 'GET',
       success: (result) => {
         this.setState({ categories: result.categories });
@@ -49,7 +49,7 @@ class QuizView extends Component {
     }
 
     $.ajax({
-      url: '/quizzes', //TODO: update request URL
+      url: '/api/quizzes', //TODO: update request URL
       type: 'POST',
       dataType: 'json',
       contentType: 'application/json',
@@ -181,8 +181,9 @@ class QuizView extends Component {
           {this.state.currentQuestion.question}
         </div>
         <form onSubmit={this.submitGuess}>
-          <input type='text' name='guess' onChange={this.handleChange} />
+          <input type='text' name='guess' id='customInput1' onChange={this.handleChange} />
           <input
+            id='input-btn'
             className='submit-guess button'
             type='submit'
             value='Submit Answer'

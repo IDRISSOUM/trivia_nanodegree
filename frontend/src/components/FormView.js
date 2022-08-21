@@ -16,7 +16,7 @@ class FormView extends Component {
 
   componentDidMount() {
     $.ajax({
-      url: `/categories`, //TODO: update request URL
+      url: `/api/questions`, //TODO: update request URL
       type: 'GET',
       success: (result) => {
         this.setState({ categories: result.categories });
@@ -32,7 +32,7 @@ class FormView extends Component {
   submitQuestion = (event) => {
     event.preventDefault();
     $.ajax({
-      url: '/questions', //TODO: update request URL
+      url: '/api/questions', //TODO: update request URL
       type: 'POST',
       dataType: 'json',
       contentType: 'application/json',
@@ -70,16 +70,20 @@ class FormView extends Component {
           id='add-question-form'
           onSubmit={this.submitQuestion}
         >
-          <label>
-            Question
-            <input type='text' name='question' onChange={this.handleChange} />
+          <div className='form-group'>
+          <label className='text-display'>
+            Question:
+            <input type='text' name='question' className='customInput' onChange={this.handleChange} />
           </label>
-          <label>
-            Answer
-            <input type='text' name='answer' onChange={this.handleChange} />
+          <label className='text-display'>
+            Answer:
+            <input type='text' name='answer' className='customInput' onChange={this.handleChange} />
           </label>
-          <label>
-            Difficulty
+          </div>
+
+          <div className='form-group'>
+          <label className='text-display'>
+            Difficulty:
             <select name='difficulty' onChange={this.handleChange}>
               <option value='1'>1</option>
               <option value='2'>2</option>
@@ -88,9 +92,10 @@ class FormView extends Component {
               <option value='5'>5</option>
             </select>
           </label>
-          <label>
-            Category
-            <select name='category' onChange={this.handleChange}>
+
+          <label className='text-display'>
+            Category:
+            <select name='category' classNameonChange={this.handleChange}>
               {Object.keys(this.state.categories).map((id) => {
                 return (
                   <option key={id} value={id}>
@@ -100,7 +105,10 @@ class FormView extends Component {
               })}
             </select>
           </label>
-          <input type='submit' className='button' value='Submit' />
+          </div>
+          
+          <div className='button-container'>
+          <input type='submit' className='button' value='Submit' id='customButton' /></div>
         </form>
       </div>
     );
