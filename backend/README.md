@@ -90,7 +90,7 @@ One note before you delve into your tasks: for each endpoint, you are expected t
 
 ```
 
-`GET \questions?page=<int:page_number> Fetches a paginated dictionary of questions of all available categories`
+`GET /api/questions?page=<int:page_number> Fetches a paginated dictionary of questions of all available categories`
 
  - Request parameters (optional): page:int
  - Response:
@@ -169,7 +169,7 @@ One note before you delve into your tasks: for each endpoint, you are expected t
 }
 ```
 
-`GET /categories/<int:category_id>/questions Fetches a dictionary of questions for the specified category`
+`GET /api/categories/<int:category_id>/questions Fetches a dictionary of questions for the specified category`
 
  - Request argument: category_id:int
  - Response:
