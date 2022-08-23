@@ -73,7 +73,34 @@ class TriviaTestCase(unittest.TestCase):
         self.assertEqual(response.status_code, 404)
         self.assertEqual(data['success'], False)
 
+     # def test_delete_question(self):
+    #     """
+    #     test de suppression selon l'id envoye en parametre
+    #     """
+    #     res = self.client().delete('/api/questions/2')
+    #     data = json.loads(res.data)
 
+    #     self.assertEqual(res.status_code, 422)
+    #     self.assertEqual(data['success'], True)
+    #     self.assertEqual(data['deleted'], 2)
+
+    # def test_delete_question(self):
+    #     question = Question(question='new question', answer='new answer',
+    #                         difficulty=1, category=1)
+    #     question.insert()
+    #     question_id = question.id
+
+    #     res = self.client().delete(f'/api/questions/{question_id}')
+    #     data = json.loads(res.data)
+
+    #     question = Question.query.filter(
+    #         Question.id == question.id).one_or_none()
+
+    #     self.assertEqual(res.status_code, 200)
+    #     self.assertEqual(data['success'], True)
+    #     self.assertEqual(data['deleted'], int(question_id))
+    #     self.assertEqual(question, None)
+    
 
     def test_delete_question_422(self):   
         """
