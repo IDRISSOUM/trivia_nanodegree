@@ -105,7 +105,7 @@ One note before you delve into your tasks: for each endpoint, you are expected t
    "5": "Entertainment", 
    "6": "Sports"
  }, 
- "current_category": null, 
+  
  "questions": [
    {
      "answer": "Maya Angelou", 
@@ -153,8 +153,7 @@ One note before you delve into your tasks: for each endpoint, you are expected t
 `POST /api/search Fetches all questions where a substring matches the search term (not case-sensitive)`
 
 ```json
-{
-  "current_category": null, 
+{ 
   "questions": [
     {
       "answer": "Lisbon", 
@@ -175,8 +174,7 @@ One note before you delve into your tasks: for each endpoint, you are expected t
  - Response:
  
 ```json
-{
-  "current_category": 1, 
+{ 
   "questions": [
     {
       "answer": "The Liver", 
